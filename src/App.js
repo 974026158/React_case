@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import TabBarCom from './common/tabBar/index'
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+//  BrowserRouter
+import {
+  Eticket,
+  Home,
+  Theater,
+  Mine
+} from '@views'
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Redirect from="/" to="/home" exact></Redirect>
+          <Route path="/home" component={Home}></Route>
+          <Route path="/theater" component={Theater}></Route>
+          <Route path="/eticket" component={Eticket}></Route>
+          <Route path="/mine" component={Mine}></Route>
+        </Switch>
+        <TabBarCom></TabBarCom>
+      </Router>
+    )
+  }
 }
+
 
 export default App;
